@@ -23,7 +23,6 @@ volumes:
     name: data
     size: 50Gi
     matchLabels: false
-    
   
 properties:
-    revision: 4
+    revision: 5
