@@ -1,6 +1,9 @@
 groups:
 - name: node-exporter.rules
   rules:
+  - expr: sum(rate(label_replace(container_fs_usage_bytes{job="kubernetes-cadvisor"}[1m], "container", "$1", "container_id", "(.*)")) by (namespace, pod))
+    record: container_usage_rate
+
   - expr: |
       count without (cpu) (
         count without (mode) (
