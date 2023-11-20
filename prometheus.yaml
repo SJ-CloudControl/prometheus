@@ -68,6 +68,7 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+   
   - job_name: 'kubernetes-nodes'
 
     kubernetes_sd_configs:
@@ -87,5 +88,7 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics
+    - action: keep
+      regex: kubelet_volume_stats_available_bytes
 
     
