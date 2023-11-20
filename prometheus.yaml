@@ -55,3 +55,12 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+  - job_name: "Kubelet"
+    metrics_path: "/metrics/cadvisor"
+    scheme: "https"
+    honor_timestamps: true
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    tls_config:
+     insecure_skip_verify: true
+    static_configs:
+    - targets: ['172.31.12.178:10250']
