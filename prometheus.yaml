@@ -60,4 +60,5 @@ scrape_configs:
     metrics_path: "/metrics"
     scheme: "https"
     static_configs:
-    - targets: ['mongodb-4-4:8000']
+    - targets: ['172.31.20.210:31201','172.31.48.127:31201','172.31.62.118:31201']
+
