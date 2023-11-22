@@ -56,8 +56,14 @@ scrape_configs:
       regex: (.+)
       target_label: __metrics_path__
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
-  - job_name: "Disk USage"
+  - job_name: "MongoPod FS Usage"
     metrics_path: "/metrics"
+    relabel_configs:
+    - source_labels: [path]
+      target_label: path
+      regex: '(.*?)(,|$)'
+      replacement: '${1}'
+      action: labeldrop
     static_configs:
     - targets: ['mongodb-4-4:8000']
 
