@@ -60,10 +60,9 @@ scrape_configs:
     metrics_path: "/metrics"
     relabel_configs:
     - source_labels: [path]
-      target_label: path
       regex: '(.*?)(,|$)'
       replacement: '${1}'
-      action: labeldrop
+      action: labeldrop    
     static_configs:
     - targets: ['mongodb-4-4:8000']
 
