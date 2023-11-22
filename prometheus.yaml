@@ -58,7 +58,6 @@ scrape_configs:
       replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
   - job_name: "Disk USage"
     metrics_path: "/metrics"
-    scheme: "https"
     static_configs:
     - targets: ['172.31.20.210:31201','172.31.48.127:31201','172.31.62.118:31201']
 
