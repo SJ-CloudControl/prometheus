@@ -62,7 +62,7 @@ groups:
 - name: High-DiskUsage-Pod
   rules:
   - alert: HighPodDU
-    expr: 100 - (100 * (filesystem_available_size_bytes / filesystem_total_size_bytes))  > 90
+    expr: 100 - (100 * (filesystem_available_size_bytes / filesystem_total_size_bytes))  < 90
     for: 5m
     labels:
       severity: warning
