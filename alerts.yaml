@@ -58,4 +58,15 @@ groups:
     annotations:
       summary: "High CPU load (instance {{ $labels.instance }})"
       description: "CPU load is high\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+- name: High-DiskUsage-Pod
+  rules:
+  - alert: HighPodDU
+    expr: 100 - (100 * (filesystem_available_size_bytes / filesystem_total_size_bytes))  > 90
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: HighDiskUsage
+      description: "Pod disk usage percent value : {{ $value | printf \"%.2f\" }}"
       
